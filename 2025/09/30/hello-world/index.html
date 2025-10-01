@@ -141,7 +141,7 @@
     <footer class="article-footer">
       <a
         data-url="https://wincheer.github.io/2025/09/30/hello-world/"
-        data-id="cuidZGebY2L77bolplsTwEuZi"
+        data-id="cuid33FvKRwLwOSer0cPs2BJG"
         data-title="Hello World"
         class="article-share-link"
         ><span class="fa fa-share">分享</span></a
@@ -173,16 +173,19 @@
 
 <!-- Waline 评论系统 -->
 
-<section id="comments" style="padding: 0 20px;">
+<section id="comments" style="padding: 0 20px">
   <div id="waline-comments"></div>
-  
+
   <!-- Waline 样式 -->
-  <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
-  
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/@waline/client@v2/dist/waline.css"
+  />
+
   <!-- Waline 脚本 -->
   <script type="module">
     import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';
-    
+
     init({
       el: '#waline-comments',
       serverURL: 'https://wincheerblogcomment.vercel.app',
