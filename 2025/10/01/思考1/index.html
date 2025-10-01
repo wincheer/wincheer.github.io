@@ -99,20 +99,19 @@
   <time class="dt-published" datetime="2025-10-01T03:26:08.000Z" itemprop="datePublished">2025-10-01</time>
 </a>
     
-    
   <div class="article-category">
     <a class="article-category-link" href="/categories/ai-thinking/">AI思考</a>
   </div>
 
-    
+
     <!-- 文章阅读量统计 -->
     
     <span
       id="busuanzi_container_page_pv"
       class="article-view-count"
-      style="float: left; margin-left: 8px; color: #999; line-height: 1em;"
+      style="float: left; margin-left: 8px; color: #999; line-height: 1em"
     >
-      <span style="color: #ccc; margin-right: 4px;">•</span>
+      <span style="color: #ccc; margin-right: 4px">•</span>
       📖 <span id="busuanzi_value_page_pv"></span> 次阅读
     </span>
     
@@ -137,7 +136,7 @@
     <footer class="article-footer">
       <a
         data-url="https://wincheer.github.io/2025/10/01/%E6%80%9D%E8%80%831/"
-        data-id="cuidgF6ecK9UqvNTiSWRRyB8F"
+        data-id="cuidgzznHhmoaLTLigc0X2qOC"
         data-title="思考1"
         class="article-share-link"
         ><span class="fa fa-share">分享</span></a
@@ -160,7 +159,44 @@
  
 </article>
 
- 
+<!-- Waline 评论系统 -->
+
+<section id="comments" style="padding: 0 20px;">
+  <div id="waline-comments"></div>
+  
+  <!-- Waline 样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+  
+  <!-- Waline 脚本 -->
+  <script type="module">
+    import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';
+    
+    init({
+      el: '#waline-comments',
+      serverURL: 'https://wincheerblogcomment.vercel.app',
+      lang: 'zh-CN',
+      locale: {
+        placeholder: '欢迎留言交流！支持 Markdown 语法 😊',
+      },
+      emoji: [
+        '//unpkg.com/@waline/emojis@1.1.0/weibo',
+        '//unpkg.com/@waline/emojis@1.1.0/bmoji',
+      ],
+      dark: 'auto',
+      meta: [&#34;nick&#34;,&#34;mail&#34;,&#34;link&#34;],
+      requiredMeta: [&#34;nick&#34;],
+      wordLimit: 0,
+      pageSize: 10,
+    });
+  </script>
+</section>
+
+
+<!-- Disqus 评论系统 -->
+
+
+<!-- Valine 评论系统 -->
+
 </section>
         
           <aside id="sidebar">
