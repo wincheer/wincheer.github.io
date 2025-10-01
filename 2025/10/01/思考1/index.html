@@ -136,7 +136,7 @@
     <footer class="article-footer">
       <a
         data-url="https://wincheer.github.io/2025/10/01/%E6%80%9D%E8%80%831/"
-        data-id="cuidJX2y6u3Uv83i9u8ZhffzU"
+        data-id="cuidrbpJPpWRea4g92eIFLpp4"
         data-title="思考1"
         class="article-share-link"
         ><span class="fa fa-share">分享</span></a
@@ -161,36 +161,39 @@
 
 <!-- Waline 评论系统 -->
 
-<section id="comments" style="padding: 0 20px">
-  <div id="waline-comments"></div>
+<section id="comments" style="padding: 20px; margin-top: 40px; background: #f9f9f9; border-radius: 8px;">
+  <h3 style="margin-bottom: 20px; font-size: 1.5em; color: #333;">💬 评论</h3>
+  <div id="waline"></div>
 
   <!-- Waline 样式 -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/@waline/client@v2/dist/waline.css"
-  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css" />
 
   <!-- Waline 脚本 -->
   <script type="module">
-    import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';
+    import { init } from 'https://cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.mjs';
 
-    init({
-      el: '#waline-comments',
-      serverURL: 'https://wincheerblogcomment.vercel.app',
-      lang: 'zh-CN',
-      locale: {
-        placeholder: '欢迎留言交流！支持 Markdown 语法 😊',
-      },
-      emoji: [
-        '//unpkg.com/@waline/emojis@1.1.0/weibo',
-        '//unpkg.com/@waline/emojis@1.1.0/bmoji',
-      ],
-      dark: 'auto',
-      meta: [&#34;nick&#34;,&#34;mail&#34;,&#34;link&#34;],
-      requiredMeta: [&#34;nick&#34;],
-      wordLimit: 0,
-      pageSize: 10,
-    });
+    try {
+      init({
+        el: '#waline',
+        serverURL: 'https://wincheerblogcomment.vercel.app',
+        lang: 'zh-CN',
+        locale: {
+          placeholder: '欢迎留言交流！支持 Markdown 语法 😊',
+        },
+        emoji: [
+          'https://unpkg.com/@waline/emojis@1.1.0/weibo',
+          'https://unpkg.com/@waline/emojis@1.1.0/bmoji',
+        ],
+        dark: 'auto',
+        meta: [&#34;nick&#34;,&#34;mail&#34;,&#34;link&#34;],
+        requiredMeta: [&#34;nick&#34;],
+        wordLimit: 0,
+        pageSize: 10,
+      });
+      console.log('Waline 初始化成功');
+    } catch (error) {
+      console.error('Waline 初始化失败:', error);
+    }
   </script>
 </section>
 
