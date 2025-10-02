@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>模块四：远程仓库与 GitHub 协作 | Think In AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="各位，恭喜你们已经完全掌握了在自己的“单机宇宙”里进行版本控制的各种神技。我们的代码历史现在井井有条，还能在不同的“平行时空”（分支）里穿梭自如。 但软件开发从来都不是一个人的战斗。到目前为止，我们所有的“游戏存档”都只存在于我们自己的电脑上。现在，让我们来思考几个直击灵魂的“第一性问题”：  如果你的电脑硬盘突然坏了，你的所有代码和历史记录是不是就付之一炬了？ 你如何把你写好的绝妙功能，安全地分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模块四：远程仓库与 GitHub 协作">
+<meta property="og:url" content="https://wincheer.github.io/2025/10/02/%E6%A8%A1%E5%9D%97%E5%9B%9B%EF%BC%9A%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8E-GitHub-%E5%8D%8F%E4%BD%9C/index.html">
+<meta property="og:site_name" content="Think In AI">
+<meta property="og:description" content="各位，恭喜你们已经完全掌握了在自己的“单机宇宙”里进行版本控制的各种神技。我们的代码历史现在井井有条，还能在不同的“平行时空”（分支）里穿梭自如。 但软件开发从来都不是一个人的战斗。到目前为止，我们所有的“游戏存档”都只存在于我们自己的电脑上。现在，让我们来思考几个直击灵魂的“第一性问题”：  如果你的电脑硬盘突然坏了，你的所有代码和历史记录是不是就付之一炬了？ 你如何把你写好的绝妙功能，安全地分">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-02T12:34:16.000Z">
+<meta property="article:modified_time" content="2025-10-02T12:35:32.242Z">
+<meta property="article:author" content="wincheer">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="GitHub">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Think In AI</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">—— AI 技术沉思录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/categories/ai-practice">AI实战</a>
+        
+          <a class="main-nav-link" href="/categories/ai-news">AI新闻</a>
+        
+          <a class="main-nav-link" href="/categories/ai-thinking">AI思考</a>
+        
+          <a class="main-nav-link" href="/categories/prepare">预备知识</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          
+            <a class="nav-icon" target="_blank" rel="noopener" href="https://github.com/wincheer/wincheer.github.io"><span class="fa fa-github"></span></a>
+          
+        
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wincheer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article
+  id="post-模块四：远程仓库与-GitHub-协作"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="article-meta">
+    <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E5%9B%9B%EF%BC%9A%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8E-GitHub-%E5%8D%8F%E4%BD%9C/" class="article-date">
+  <time class="dt-published" datetime="2025-10-02T12:34:16.000Z" itemprop="datePublished">2025-10-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/prepare/">预备知识</a>►<a class="article-category-link" href="/categories/prepare/Git-Github-%E6%96%B0%E6%89%8B%E5%AE%8C%E5%85%A8%E5%85%A5%E9%97%A8/">Git/Github 新手完全入门</a>
+  </div>
+
+
+    <!-- 文章阅读量统计 -->
+    
+    <span
+      id="busuanzi_container_page_pv"
+      class="article-view-count"
+      style="float: left; margin-left: 8px; color: #999; line-height: 1em"
+    >
+      <span style="color: #ccc; margin-right: 4px">•</span>
+      📖 <span id="busuanzi_value_page_pv"></span> 次阅读
+    </span>
+    
+  </div>
+  <div class="article-inner">
+     
+    <header class="article-header">
+      
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      模块四：远程仓库与 GitHub 协作
+    </h1>
+  
+
+    </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+       <p>各位，恭喜你们已经完全掌握了在自己的“单机宇宙”里进行版本控制的各种神技。我们的代码历史现在井井有条，还能在不同的“平行时空”（分支）里穿梭自如。</p>
+<p>但软件开发从来都不是一个人的战斗。到目前为止，我们所有的“游戏存档”都只存在于我们自己的电脑上。现在，让我们来思考几个直击灵魂的“第一性问题”：</p>
+<ol>
+<li>如果你的电脑硬盘突然坏了，你的所有代码和历史记录是不是就付之一炬了？</li>
+<li>你如何把你写好的绝妙功能，安全地分享给你的同事？</li>
+<li>当你的同事修复了一个重要 Bug，你又如何将他的代码更新到你自己的电脑上？</li>
+</ol>
+<p>这些问题的答案，都指向了同一个概念——<strong>远程仓库 (Remote Repository)</strong>。这个模块，我们将走出自己的小世界，踏入团队协作的广阔天地，学会如何利用 GitHub 这个“中央代码图书馆”，与团队成员高效地同步工作。</p>
+<span id="more"></span>
+
+<hr>
+<h3 id="【场景】"><a href="#【场景】" class="headerlink" title="【场景】"></a>【场景】</h3><hr>
+<p>想象一下，你是一位中世纪的学者，正在自己的书房里奋笔疾书，撰写一部关于炼金术的巨著。你所有的手稿、草稿、修改记录，都存放在你的书房里。这就是你的<strong>本地仓库</strong>。</p>
+<p>现在，你遇到了几个大麻烦：</p>
+<ul>
+<li><strong>备份与安全</strong>：一场火灾就可能让你所有的心血化为灰烬。</li>
+<li><strong>协作</strong>：你的好友，另一位大学者，也想参与撰写其中一个章节。难道你要派信使骑马几百公里，把厚重的手稿送过去，等他修改完再送回来吗？这个过程效率太低，而且版本很容易混乱。</li>
+<li><strong>发布与分享</strong>：你想让更多人看到你的著作，总不能让所有人都来你的小书房排队抄录吧？</li>
+</ul>
+<p>为了解决这些问题，你们决定在首都的皇家图书馆建立一个专门的书架，用来存放这部巨著的“官方唯一版本”。任何学者都可以申请一张“借阅证”，从图书馆借阅最新的手稿副本进行研究，也可以在完成自己的撰写后，申请将自己的成果更新到官方版本中。</p>
+<p>这个<strong>皇家图书馆</strong>，就是我们在 GitHub 上的<strong>远程仓库</strong>。它为我们提供了代码的集中存储、安全备份和协作基础。</p>
+<hr>
+<h3 id="【理论】"><a href="#【理论】" class="headerlink" title="【理论】"></a>【理论】</h3><hr>
+<h4 id="1-什么是远程仓库？——-团队的“单一事实来源”"><a href="#1-什么是远程仓库？——-团队的“单一事实来源”" class="headerlink" title="1. 什么是远程仓库？—— 团队的“单一事实来源”"></a><strong>1. 什么是远程仓库？—— 团队的“单一事实来源”</strong></h4><p>远程仓库（Remote Repository）本质上就是托管在网络服务器上的一个 Git 仓库。对于我们团队而言，这个服务器就是 GitHub。</p>
+<p><strong>远程仓库是团队的“中央代码图书馆”或“云端同步主文件夹”。</strong></p>
+<ul>
+<li>它是所有团队成员代码的“单一事实来源”（Single Source of Truth）。</li>
+<li>每个成员电脑上的本地仓库，都可以看作是这个中央图书馆的一个“完整离线副本”。</li>
+<li>你可以在本地仓库里随意工作（即使断网），然后在合适的时候，将你的工作“同步”到远程仓库，或者从远程仓库获取他人的最新工作。</li>
+</ul>
+<p>这个默认的远程仓库，Git 会给它起一个默认的昵称，叫做 <code>origin</code>。你完全可以把它理解成“我们那个在 GitHub 上的主仓库”。</p>
+<h4 id="2-身份认证：你的“图书馆通行证”"><a href="#2-身份认证：你的“图书馆通行证”" class="headerlink" title="2. 身份认证：你的“图书馆通行证”"></a><strong>2. 身份认证：你的“图书馆通行证”</strong></h4><p><strong>第一性问题：</strong> 为什么我们不能随随便便就向公司的远程仓库上传代码？因为远程仓库是受保护的。GitHub 必须验证你的身份，确保你是有权限的内部员工，而不是某个想搞破坏的黑客。</p>
+<p>每次操作都要输入用户名和密码太繁琐了，而且也不够安全。因此，我们需要一种更专业、更安全的“身份凭证”。主要有两种方式：SSH 和 HTTPS (配合 Personal Access Token)。</p>
+<ol>
+<li><strong>SSH 方式（推荐）</strong><ul>
+<li><strong>比喻</strong>：这就像是给你的电脑办了一张 VIP 专属通行证。你生成一对独一无二的“密钥”——一个是“公钥”（Public Key），一个是“私钥”（Private Key）。</li>
+<li><strong>公钥</strong>：你可以把它想象成一把你对外分发的“锁”。你把这把“锁”放到 GitHub 上，安装在仓库的大门上。</li>
+<li><strong>私钥</strong>：这是唯一能打开这把锁的“钥匙”，你必须妥善地、绝密地保存在你的电脑上。</li>
+<li><strong>工作流程</strong>：当你尝试连接 GitHub 时，GitHub 会用你的“锁”（公钥）加密一段信息发给你，只有你用你自己的“钥匙”（私 key）才能解开。一旦解开，GitHub 就确认了你的身份。</li>
+<li><strong>优点</strong>：配置好之后，未来所有的操作都不再需要输入密码，安全又便捷。</li>
+</ul>
+</li>
+<li><strong>HTTPS 与 Personal Access Token (PAT) 方式</strong><ul>
+<li><strong>比喻</strong>：这就像是你不使用你本人的人脸识别或指纹（SSH），而是去图书馆前台办理了一张有时效性的、可以随时注销的“临时访问卡”。</li>
+<li><strong>工作流程</strong>：你还是通过熟悉的网址链接（HTTPS）去访问仓库，但在需要输入密码时，你输入的不是你的 GitHub 登录密码，而是在 GitHub 设置里专门生成的“个人访问令牌”（PAT）。</li>
+<li><strong>优点</strong>：配置比 SSH 简单一些，但每次操作可能仍需认证（取决于你的系统配置）。PAT 可以设置不同的权限和过期时间，比直接使用主密码安全得多。</li>
+</ul>
+</li>
+</ol>
+<p><strong>小贴士</strong>: 推荐使用 <strong>SSH 方式</strong>进行认证，一次配置，终身（或更换电脑前）受益。</p>
+<h4 id="3-核心协作流程：push-fetch-pull-的艺术"><a href="#3-核心协作流程：push-fetch-pull-的艺术" class="headerlink" title="3. 核心协作流程：push, fetch, pull 的艺术"></a><strong>3. 核心协作流程：<code>push</code>, <code>fetch</code>, <code>pull</code> 的艺术</strong></h4><p>我们与远程仓库的交互，构成了团队协作的核心循环。整个流程就像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从远程拉取最新代码 (pull) -&gt; 在本地进行开发和提交 (add/commit) -&gt; 将本地成果推送到远程 (push)</span><br></pre></td></tr></table></figure>
+
+<p>让我们来精确理解这几个关键动作：</p>
+<ul>
+<li><strong><code>git push</code> (推送)</strong><ul>
+<li><strong>含义</strong>：将你的本地分支上的“提交历史”，上传到远程仓库对应的分支上。</li>
+<li><strong>比喻</strong>：你完成了书稿一个新章节的撰写，现在你把你的手稿副本送到中央图书馆，请求更新官方版本。</li>
+<li><strong>注意</strong>：如果你要推送的分支在远程仓库上还不存在，Git 会自动帮你创建。</li>
+</ul>
+</li>
+<li><strong><code>git fetch</code> (拉取)</strong><ul>
+<li><strong>含义</strong>：从远程仓库下载所有你本地没有的数据，包括所有分支的最新提交历史。</li>
+<li><strong>关键点</strong>：<code>fetch</code> <strong>只下载数据，但不会修改你当前的工作区和文件</strong>。它只是更新了你本地仓库中对远程仓库的“认知”。</li>
+<li><strong>比喻</strong>：你派信使去图书馆，让他把图书馆里所有新书的“目录”和“内容摘要”抄录回来，但并没有把新书的实体带回你的书房。现在你知道了外界的变化，但你的书桌上还是原来的那几本书。</li>
+</ul>
+</li>
+<li><strong><code>git pull</code> (拉取并合并)</strong><ul>
+<li><strong>含义</strong>：这其实是一个复合命令，它等同于 <strong><code>git fetch</code> + <code>git merge</code></strong>。</li>
+<li><strong>工作流程</strong>：<ol>
+<li>先执行 <code>git fetch</code>，从远程仓库下载最新的提交历史。</li>
+<li>然后，将远程分支的最新版本，自动 <code>merge</code> (合并) 到你当前所在的本地分支。</li>
+</ol>
+</li>
+<li><strong>比喻</strong>：你派信使去图书馆，他不仅带回了新书的“目录”，还直接把新书的内容，和你自己正在写的草稿“融合”在了一起。</li>
+<li><strong>风险</strong>：因为 <code>pull</code> 包含了自动合并，如果远程版本和你本地版本修改了同一个地方，就有可能产生合并冲突。</li>
+</ul>
+</li>
+</ul>
+<p><strong>最佳实践</strong>：在准备 <code>push</code> 你的代码前，养成先 <code>git pull</code>（或者更严谨的 <code>git fetch</code> + <code>git rebase</code>，我们会在高级篇讲到）的好习惯，确保你的工作是基于团队最新的代码之上，这能有效减少未来的合并冲突。</p>
+<hr>
+<h3 id="【核心】"><a href="#【核心】" class="headerlink" title="【核心】"></a>【核心】</h3><hr>
+<p>让我们来模拟一次完整的本地与远程的交互流程。</p>
+<h4 id="1-配置-SSH-密钥（一次性操作）"><a href="#1-配置-SSH-密钥（一次性操作）" class="headerlink" title="1. 配置 SSH 密钥（一次性操作）"></a><strong>1. 配置 SSH 密钥（一次性操作）</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 步骤1: 生成新的 SSH 密钥对</span><br><span class="line"># -t 指定类型为 ed25519 (目前推荐，更安全)</span><br><span class="line"># -C 添加一个注释，通常是你的邮箱</span><br><span class="line">ssh-keygen -t ed25519 -C &quot;your_email@company.com&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>逐行精讲</strong>：运行后，系统会提示你保存文件的位置（直接回车即可）和设置密码（可选，建议直接回车留空，方便使用）。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 步骤2: 查看并复制你的公钥</span><br><span class="line"># 在 Mac/Linux 上</span><br><span class="line">cat ~/.ssh/id_ed25519.pub</span><br><span class="line"># 在 Windows 上 (使用 Git Bash)</span><br><span class="line">cat C:/Users/YourUsername/.ssh/id_ed25519.pub</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>操作指导</strong>：复制屏幕上显示的、以 <code>ssh-ed25519</code> 开头、以你的邮箱结尾的全部内容。</p>
+</li>
+<li><p><strong>步骤 3</strong>: <strong>在 GitHub 上添加公钥</strong></p>
+<ol>
+<li>登录 GitHub，点击右上角头像 -&gt; <code>Settings</code>。</li>
+<li>在左侧菜单选择 <code>SSH and GPG keys</code>。</li>
+<li>点击 <code>New SSH key</code>。</li>
+<li><code>Title</code> 处可以随便填一个方便你识别的名字（如 <code>My Work Laptop</code>）。</li>
+<li>在 <code>Key</code> 处，<strong>粘贴你刚刚复制的全部公钥内容</strong>。</li>
+<li>点击 <code>Add SSH key</code>。</li>
+</ol>
+</li>
+<li><p><strong>步骤 4: 测试 SSH 连接</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 在终端输入以下命令</span><br><span class="line">ssh -T git@github.com</span><br><span class="line"># 如果看到类似 “Hi YourUsername! You&#x27;ve successfully authenticated...” 的信息，就代表配置成功了！</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2-连接本地仓库到远程仓库"><a href="#2-连接本地仓库到远程仓库" class="headerlink" title="2. 连接本地仓库到远程仓库"></a><strong>2. 连接本地仓库到远程仓库</strong></h4><p>假设我们已经在 GitHub 上创建了一个名为 <code>ocean-project</code> 的空仓库。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 场景1: 将一个已有的本地仓库连接到远程</span><br><span class="line">cd path/to/your/local/project</span><br><span class="line"></span><br><span class="line"># 步骤1: 添加远程仓库地址，并给它起个昵称叫 origin</span><br><span class="line"># (请从你的 GitHub 仓库页面复制 SSH 格式的 URL)</span><br><span class="line">git remote add origin git@github.com:YourCompany/ocean-project.git</span><br><span class="line"></span><br><span class="line"># 步骤2: 验证是否添加成功</span><br><span class="line">git remote -v</span><br><span class="line"># 应该会显示出 fetch 和 push 的地址</span><br><span class="line"></span><br><span class="line"># 步骤3: 推送你的本地 main 分支到远程</span><br><span class="line"># -u 参数非常重要，它会建立本地 main 与远程 origin/main 的追踪关系</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>逐行精讲</strong>:<ul>
+<li><code>git remote add &lt;name&gt; &lt;url&gt;</code>: 这个命令是用来添加一个新的远程仓库连接的。我们习惯性地把主仓库命名为 <code>origin</code>。需要强调的是，<code>origin</code> 只是一个约定俗成的名字，不是 Git 的关键字。你完全可以叫它 <code>github</code> 或者 <code>my-remote-server</code>，但遵守社区约定 (<code>origin</code>) 能让所有协作者更容易理解。</li>
+<li><code>git push -u origin main</code>: <code>-u</code> 或 <code>--set-upstream</code> 的意思是，在推送的同时，告诉 Git：“请把我的本地 <code>main</code> 分支和远程的 <code>main</code> 分支关联起来。” 这样设置一次之后，未来在这个分支上，你只需要简单地使用 <code>git push</code> 和 <code>git pull</code>，Git 就知道该去哪里推拉了。思考一下：如果没有 <code>-u</code>，你每次推送和拉取都需要完整地写 <code>git push origin main</code> 和 <code>git pull origin main</code>。加上 <code>-u</code> 就像是告诉 Git：‘记住这个组合！’，这才是它真正强大的地方。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-模拟团队协作"><a href="#3-模拟团队协作" class="headerlink" title="3. 模拟团队协作"></a><strong>3. 模拟团队协作</strong></h4><p>现在，假设你的同事刚刚向 <code>ocean-project</code> 推送了一个更新。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 你的同事在另一台电脑上 push 了一个 commit</span><br><span class="line"></span><br><span class="line"># 在你的电脑上，你的本地仓库对此一无所知</span><br><span class="line"># 步骤1: 获取远程仓库的最新更新信息</span><br><span class="line">git fetch origin</span><br><span class="line"># 此时，你的工作文件没有任何变化，但 Git 已经知道了 origin/main 有了新东西</span><br><span class="line"></span><br><span class="line"># 步骤2: 查看一下远程分支的最新历史</span><br><span class="line">git log origin/main</span><br><span class="line"></span><br><span class="line"># 步骤3: 将远程的变更合并到你的本地分支</span><br><span class="line">git pull origin main</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>逐行精讲</strong>:<ul>
+<li><code>git pull origin main</code>: 这句话完整的意思是“请把 <code>origin</code> 这个远程仓库的 <code>main</code> 分支的最新内容，拉取并合并到我<strong>当前所在</strong>的本地分支里来。”</li>
+<li>因为我们之前设置了 <code>-u</code> 追踪关系，所以如果你当前就在 <code>main</code> 分支，可以直接简化为 <code>git pull</code>。为了看得更清楚，你也可以手动分解这个过程，它完全等价于以下两步：第一步 <code>git fetch</code>，第二步 <code>git merge origin/main</code>。我们鼓励新学员偶尔尝试手动分解，这能让你在遇到冲突时更清楚问题出在哪个环节。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="【实践】"><a href="#【实践】" class="headerlink" title="【实践】"></a>【实践】</h3><hr>
+<p><strong>任务目标</strong>: 完整体验一次从零开始，连接远程仓库并与“虚拟队友”协作的流程。</p>
+<p><strong>操作步骤</strong>:</p>
+<ol>
+<li><strong>远程准备</strong>:<ul>
+<li>登录你的 GitHub 账户。</li>
+<li>创建一个<strong>新的公开仓库</strong>（New Repository），命名为 <code>my-remote-practice</code>。</li>
+<li><strong>不要</strong>勾选任何 “Initialize this repository with…” 的选项，保持它是一个完全空的仓库。</li>
+</ul>
+</li>
+<li><strong>本地准备</strong>:<ul>
+<li>在你的电脑上，创建一个新文件夹 <code>my-remote-practice</code>，并 <code>cd</code> 进去。</li>
+<li><code>git init</code> 初始化本地仓库。</li>
+<li>创建一个 <code>README.md</code> 文件，写上一句 “Hello, GitHub!”。</li>
+<li><code>git add .</code> 并 <code>git commit -m &quot;feat: Initial commit&quot;</code>。</li>
+</ul>
+</li>
+<li><strong>建立连接与推送</strong>:<ul>
+<li>回到 GitHub 上你刚创建的仓库页面，找到 “…or push an existing repository from the command line” 下方的指令。</li>
+<li>复制并执行那两行命令（<code>git remote add origin ...</code> 和 <code>git push -u origin main</code>）。</li>
+<li>刷新你的 GitHub 仓库页面，确认 <code>README.md</code> 文件已经成功上传。</li>
+</ul>
+</li>
+<li><strong>模拟队友工作</strong>:<ul>
+<li>在 GitHub 网站上，直接点击 <code>README.md</code> 文件。</li>
+<li>点击文件右上角的铅笔图标（Edit this file）。</li>
+<li>在文件末尾添加新的一行 “This line was added on GitHub.”。</li>
+<li>在页面下方，直接点击 <code>Commit changes</code> 按钮。</li>
+<li>现在，你的远程仓库已经领先于你的本地仓库了。</li>
+</ul>
+</li>
+<li><strong>同步队友工作</strong>:<ul>
+<li>回到你的本地终端（命令行）。</li>
+<li>执行 <code>git pull</code> 命令。</li>
+<li>你应该能看到 Git 提示有文件被更新了。</li>
+<li>使用 <code>cat README.md</code> (或打开文件) 检查，确认你在网站上添加的那句话已经成功同步到你的本地文件里了。</li>
+</ul>
+</li>
+</ol>
+<p>完成以上所有步骤，你就掌握了 Git 协作的命脉！你现在已经具备了和全世界的开发者一起共建项目的基础能力。</p>
+ 
+    </div>
+    <footer class="article-footer">
+      <a
+        data-url="https://wincheer.github.io/2025/10/02/%E6%A8%A1%E5%9D%97%E5%9B%9B%EF%BC%9A%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8E-GitHub-%E5%8D%8F%E4%BD%9C/"
+        data-id="cuidkx3Xy7FxKc-IL2x4hTBab"
+        data-title="模块四：远程仓库与 GitHub 协作"
+        class="article-share-link"
+        ><span class="fa fa-share">分享</span></a
+      >
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li></ul>
+
+    </footer>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%BA%94%EF%BC%9A%E8%A7%84%E8%8C%83%E5%8C%96%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          模块五：规范化开发工作流
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%B8%89%EF%BC%9A%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E4%B8%8E%E5%90%88%E5%B9%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">模块三：分支管理与合并</div>
+    </a>
+  
+</nav>
+ 
+</article>
+
+<!-- Waline 评论系统 -->
+
+<section
+  id="comments"
+  style="
+    padding: 20px;
+    margin-top: 40px;
+    background: #f9f9f9;
+    border-radius: 8px;
+  "
+>
+  <h3 style="margin-bottom: 20px; font-size: 1.5em; color: #333">💬 评论</h3>
+  <div id="waline"></div>
+
+  <!-- Waline 样式 -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"
+  />
+
+  <!-- Waline 脚本 -->
+  <script type="module">
+    import { init } from 'https://cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.mjs';
+
+    try {
+      init({
+        el: '#waline',
+        serverURL: 'https://wincheerblogcomment.vercel.app',
+        lang: 'zh-CN',
+        locale: {
+          placeholder: '欢迎留言交流！支持 Markdown 语法 😊',
+        },
+        emoji: [
+          'https://unpkg.com/@waline/emojis@1.1.0/weibo',
+          'https://unpkg.com/@waline/emojis@1.1.0/bmoji',
+        ],
+        dark: 'auto',
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick"],
+        wordLimit: 0,
+        pageSize: 10,
+      });
+      console.log('Waline 初始化成功');
+    } catch (error) {
+      console.error('Waline 初始化失败:', error);
+    }
+  </script>
+</section>
+
+
+<!-- Disqus 评论系统 -->
+
+
+<!-- Valine 评论系统 -->
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/prepare/">预备知识</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/prepare/Git-Github-%E6%96%B0%E6%89%8B%E5%AE%8C%E5%85%A8%E5%85%A5%E9%97%A8/">Git/Github 新手完全入门</a><span class="category-list-count">10</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHubFlow/" rel="tag">GitHubFlow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5/" rel="tag">代码审查</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/GitHub/" style="font-size: 15px;">GitHub</a> <a href="/tags/GitHubFlow/" style="font-size: 10px;">GitHubFlow</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5/" style="font-size: 10px;">代码审查</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">十月 2025</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E5%85%AB%EF%BC%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E8%B7%B5%E4%B8%8E%E7%AD%94%E7%96%91/">模块八：综合实践与答疑</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%B8%83%EF%BC%9A%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">模块七：高级技巧与最佳实践</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E5%85%AD%EF%BC%9APull-Request-%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5/">模块六：Pull Request 与代码审查</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%BA%94%EF%BC%9A%E8%A7%84%E8%8C%83%E5%8C%96%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81/">模块五：规范化开发工作流</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E5%9B%9B%EF%BC%9A%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8E-GitHub-%E5%8D%8F%E4%BD%9C/">模块四：远程仓库与 GitHub 协作</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+       © 2025 Think In AI. All rights reserved. 
+      &copy; 2025 wincheer<br />
+      Powered by
+      <a href="https://hexo.io/" target="_blank">Hexo</a>
+
+      <!-- 不蒜子访问统计 -->
+      
+      <div
+        class="busuanzi-stats"
+        style="margin-top: 10px; color: #999; font-size: 0.9em"
+      >
+        <span id="busuanzi_container_site_pv" style="margin-right: 15px">
+          👀 本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+        </span>
+        <span id="busuanzi_container_site_uv">
+          👤 总访客数 <span id="busuanzi_value_site_uv"></span> 人
+        </span>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+
+<!-- 不蒜子统计脚本 -->
+
+<script
+  async
+  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+></script>
+
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/ai-practice" class="mobile-nav-link">AI实战</a>
+  
+    <a href="/categories/ai-news" class="mobile-nav-link">AI新闻</a>
+  
+    <a href="/categories/ai-thinking" class="mobile-nav-link">AI思考</a>
+  
+    <a href="/categories/prepare" class="mobile-nav-link">预备知识</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

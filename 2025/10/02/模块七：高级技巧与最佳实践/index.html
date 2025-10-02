@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>模块七：高级技巧与最佳实践 | Think In AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="恭喜各位！到目前为止，你们已经完全掌握了从创建分支到合并 PR 的一整套专业开发流程。可以说，你们已经拿到了“Git 驾照”，可以安全、自信地在团队协作的道路上行驶了。 但是，真正的老司机不仅会开车，还要会修车，更懂得如何应对路上的各种突发状况。比如，车开出去一公里，发现后备箱没关（提交信息写错了怎么办？）；走错了路口，需要安全地掉头（如何撤销一次错误的提交？）；或者正在长途旅行，突然要临时拐去办">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模块七：高级技巧与最佳实践">
+<meta property="og:url" content="https://wincheer.github.io/2025/10/02/%E6%A8%A1%E5%9D%97%E4%B8%83%EF%BC%9A%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:site_name" content="Think In AI">
+<meta property="og:description" content="恭喜各位！到目前为止，你们已经完全掌握了从创建分支到合并 PR 的一整套专业开发流程。可以说，你们已经拿到了“Git 驾照”，可以安全、自信地在团队协作的道路上行驶了。 但是，真正的老司机不仅会开车，还要会修车，更懂得如何应对路上的各种突发状况。比如，车开出去一公里，发现后备箱没关（提交信息写错了怎么办？）；走错了路口，需要安全地掉头（如何撤销一次错误的提交？）；或者正在长途旅行，突然要临时拐去办">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-02T12:46:44.000Z">
+<meta property="article:modified_time" content="2025-10-02T12:47:54.548Z">
+<meta property="article:author" content="wincheer">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="GitHub">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Think In AI</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">—— AI 技术沉思录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/categories/ai-practice">AI实战</a>
+        
+          <a class="main-nav-link" href="/categories/ai-news">AI新闻</a>
+        
+          <a class="main-nav-link" href="/categories/ai-thinking">AI思考</a>
+        
+          <a class="main-nav-link" href="/categories/prepare">预备知识</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          
+            <a class="nav-icon" target="_blank" rel="noopener" href="https://github.com/wincheer/wincheer.github.io"><span class="fa fa-github"></span></a>
+          
+        
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wincheer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article
+  id="post-模块七：高级技巧与最佳实践"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="article-meta">
+    <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%B8%83%EF%BC%9A%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="article-date">
+  <time class="dt-published" datetime="2025-10-02T12:46:44.000Z" itemprop="datePublished">2025-10-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/prepare/">预备知识</a>►<a class="article-category-link" href="/categories/prepare/Git-Github-%E6%96%B0%E6%89%8B%E5%AE%8C%E5%85%A8%E5%85%A5%E9%97%A8/">Git/Github 新手完全入门</a>
+  </div>
+
+
+    <!-- 文章阅读量统计 -->
+    
+    <span
+      id="busuanzi_container_page_pv"
+      class="article-view-count"
+      style="float: left; margin-left: 8px; color: #999; line-height: 1em"
+    >
+      <span style="color: #ccc; margin-right: 4px">•</span>
+      📖 <span id="busuanzi_value_page_pv"></span> 次阅读
+    </span>
+    
+  </div>
+  <div class="article-inner">
+     
+    <header class="article-header">
+      
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      模块七：高级技巧与最佳实践
+    </h1>
+  
+
+    </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+       <p>恭喜各位！到目前为止，你们已经完全掌握了从创建分支到合并 PR 的一整套专业开发流程。可以说，你们已经拿到了“Git 驾照”，可以安全、自信地在团队协作的道路上行驶了。</p>
+<p>但是，真正的老司机不仅会开车，还要会修车，更懂得如何应对路上的各种突发状况。比如，车开出去一公里，发现后备箱没关（提交信息写错了怎么办？）；走错了路口，需要安全地掉头（如何撤销一次错误的提交？）；或者正在长途旅行，突然要临时拐去办个急事（如何保存未完成的工作并切换到紧急任务？）。</p>
+<p><strong>今天，我们就来学习这些“老司机”必备的“高级驾驶技巧”。</strong></p>
+<p>接下来我们要接触的几个命令——<code>reset</code>、<code>rebase</code>——在很多教程里被列为“危险品”。别担心，这就像学习使用电锯或焊枪，只要你深刻理解了它们的工作原理和安全须知，它们就会成为你手中强大而高效的工具。我们将用最清晰的比喻，最谨慎的步骤来逐一揭开它们的面纱。准备好，升级你们的 Git 技能，成为团队里更可靠的“驾驶员”吧！</p>
+<span id="more"></span>
+
+<hr>
+<h3 id="【场景】"><a href="#【场景】" class="headerlink" title="【场景】"></a>【场景】</h3><hr>
+<p>想象一下你的开发日常：</p>
+<ol>
+<li><strong>场景一（手滑时刻）</strong>: 你刚刚执行了 <code>git commit</code>，正准备 <code>push</code>，突然发现 Commit Message 里有个刺眼的拼写错误，或者漏掉了一个小文件的修改。难道要为了这点小事再增加一个 “fix typo” 的丑陋提交吗？</li>
+<li><strong>场景二（十万火急）</strong>: 你正在 <code>feature-A</code> 分支上开发一个复杂的新功能，代码改了一半，文件又多又乱，根本没法提交。这时，老板冲过来说：“线上有个紧急 Bug，你必须立刻、马上放下手头的一切去修复它！” 你看着这一团糟的工作区，怎么办？把代码复制到记事本里？</li>
+<li><strong>场景三（后悔药）</strong>: 你一不小心，把一个不该提交的密码或者一个巨大的临时文件提交到了本地分支。现在它已经成了你本地历史的一部分。你绝对不想把它推送到远程，污染整个项目的历史记录。有办法让这次提交“人间蒸发”吗？</li>
+<li><strong>场景四（历史强迫症）</strong>: 在你的特性分支上，为了完成一个功能，你修修改改，来来回回提交了 10 次，提交历史看起来就像草稿纸一样杂乱（”fix 1”, “fix 2”, “oops”, “final fix”）。在创建 PR 前，你希望能把这些过程性的提交整理成一个干净、清晰的最终提交，让你的同事能一目了然地审查。</li>
+</ol>
+<p><strong>核心痛点</strong>: 在日常开发中，我们常常需要修改、撤销、暂存和整理我们的工作历史。我们需要更精细的工具来应对这些复杂的“意外状况”，让我们的工作流更灵活、提交历史更专业。</p>
+<hr>
+<h3 id="【理论】"><a href="#【理论】" class="headerlink" title="【理论】"></a>【理论】</h3><hr>
+<h4 id="1-撤销操作：三款功能各异的“后悔药”"><a href="#1-撤销操作：三款功能各异的“后悔药”" class="headerlink" title="1. 撤销操作：三款功能各异的“后悔药”"></a><strong>1. 撤销操作：三款功能各异的“后悔药”</strong></h4><p>Git 提供了三种主要的撤销机制，适用于不同场景，记住它们的关键区别：<strong>是否会改写历史</strong>。</p>
+<ul>
+<li><code>git commit --amend</code>: <strong>轻微修改</strong>。只影响“最后一次”提交，属于轻度改写历史。</li>
+<li><code>git revert</code>: <strong>安全撤销</strong>。不改写历史，而是通过创建一次“反向操作”的新提交来撤销。适用于<strong>已推送到远程</strong>的提交。</li>
+<li><code>git reset</code>: <strong>强力撤销</strong>。直接移动 HEAD 指针，彻底丢弃历史。非常强大，但会改写历史，原则上<strong>只适用于尚未推送到远程</strong>的本地提交。</li>
+</ul>
+<p><strong>A. <code>git commit --amend</code>：修正最后一次提交</strong></p>
+<ul>
+<li><strong>第一性问题</strong>: “我刚刚的提交有点小瑕疵，如何不留痕迹地修正它？”</li>
+<li>把 <code>amend</code> 想象成**“为最新的游戏存档打个补丁”**。它并不会创建一个新的存档点，而是在你刚刚创建的那个存档点的基础上，把新的修改“追加”进去，或者仅仅是改一下存档的备注信息。</li>
+<li><strong>适用场景</strong>:<ul>
+<li>修改最后一次提交的 Commit Message。</li>
+<li>漏掉了一两个文件忘记 <code>add</code>，想把它们补充进上一次提交。</li>
+</ul>
+</li>
+</ul>
+<p><strong>B. <code>git revert</code>：安全地“拨乱反正”</strong></p>
+<ul>
+<li><strong>第一性问题</strong>: “我推送了一个 Bug 到 <code>main</code> 分支，现在需要紧急修复，同时要让所有同事都知道这次‘事故’和‘修复’过程，该怎么办？”</li>
+<li><code>revert</code> 就像是<strong>发布一则“勘误声明”</strong>。它不会撕掉印错的那一页报纸（改写历史），而是会在报纸的下一版发布一个声明：“关于上一版某某文章的内容，现更正如下……”。它会创建一个全新的提交，这个提交的内容刚好和你要撤销的那个提交<strong>完全相反</strong>。</li>
+<li><strong>核心优势</strong>: 它不修改项目历史，对于已经推送到共享分支的提交来说，这是唯一推荐的“撤销”方式。它清晰地记录了“我们犯了个错，然后我们这样修正了它”的全过程。</li>
+</ul>
+<p><strong>C. <code>git reset</code>：本地历史的“时光机”</strong></p>
+<ul>
+<li><strong>第一性问题</strong>: “我在本地分支上连续做了几次错误的提交，还没推送，我希望能彻底回到某个正确的状态，就当这些错误没发生过。”</li>
+<li><code>reset</code> 命令非常强大，我们把它想象成一台时光机。但这台时光机有三个不同的模式，选择哪个模式，决定了当你“穿越”回去后，你手头正在进行的工作（工作区和暂存区的修改）会发生什么。</li>
+<li><strong>核心概念</strong>: <code>git reset</code> 的本质是移动当前分支的 <code>HEAD</code> 指针到另一个指定的提交。它的危险和强大之处都来源于此。</li>
+<li><strong>三种模式的比喻</strong>: 假设你的历史是 <code>A-B-C</code> (HEAD 在 C)，你想回到 B。<ul>
+<li><code>--soft</code>: <strong>最温柔的模式</strong>。你坐时光机回到 B，机器把你从 C 带回来的所有“货物”（C 引入的变更）都完好无损地放在你的暂存区里。你的历史变成了 <code>A-B</code>，但 <code>git status</code> 会显示所有 C 的变更都在暂存区，随时可以重新提交。</li>
+<li><code>--mixed</code> (默认模式): <strong>中等模式</strong>。你回到 B，机器把从 C 带回来的“货物”都放在了你的工作区，但没有帮你打包（放到暂存区）。你的历史是 <code>A-B</code>，但 <code>git status</code> 会显示所有 C 的变更都在工作区，你需要重新 <code>git add</code> 它们。</li>
+<li><code>--hard</code>: <strong>最危险的模式</strong>。你回到 B，时光机在穿越时把所有从 C 带回来的“货物”<strong>全部扔进了黑洞</strong>。你的历史是 <code>A-B</code>，并且工作区和暂存区都变得干干净净，所有 C 的变更都<strong>永久丢失</strong>了。<strong>这是不可逆的，使用前请三思！</strong></li>
+</ul>
+</li>
+<li><strong>黄金法则</strong>: <strong>永远不要对一个已经推送到公共分支的提交使用 <code>git reset</code></strong>。这会造成你和同事的历史记录不一致，当他 <code>pull</code> 的时候，会产生巨大的混乱。</li>
+</ul>
+<h4 id="2-git-stash：你的临时“次元口袋”"><a href="#2-git-stash：你的临时“次元口袋”" class="headerlink" title="2. git stash：你的临时“次元口袋”"></a><strong>2. <code>git stash</code>：你的临时“次元口袋”</strong></h4><ul>
+<li><strong>第一性问题</strong>: “我正在处理一个复杂功能，代码改得一团糟，突然来了个紧急任务，我该如何快速切换过去，又不丢失当前的工作？”</li>
+<li><code>git stash</code> 就像是哆啦 A 梦的**“次元口袋”**。你可以把当前工作区和暂存区里所有乱七八糟、还没准备好提交的修改，一股脑儿地塞进这个口袋里。塞进去之后，你的工作目录会瞬间变得干干净净，就像你刚从 <code>main</code> 分支 <code>checkout</code> 出来一样。然后你就可以从容地去处理紧急任务了。等忙完了，再从口袋里把之前的东西掏出来，继续工作。</li>
+</ul>
+<h4 id="3-git-rebase：让你的提交历史更“线性”"><a href="#3-git-rebase：让你的提交历史更“线性”" class="headerlink" title="3. git rebase：让你的提交历史更“线性”"></a><strong>3. <code>git rebase</code>：让你的提交历史更“线性”</strong></h4><ul>
+<li><strong>第一性问题</strong>: “我在开发分支上工作了几天，<code>main</code> 分支也同时被同事更新了好几次。现在我的分支从一个很旧的点分叉出来，合并时会产生一个难看的‘分叉合并’记录。有没有办法让我的分支看起来像是‘刚刚’才从最新的 <code>main</code> 上分叉出来的？”</li>
+<li><code>rebase</code> 是 Git 中最强大的命令之一，也是最容易被误解的。我们先来理解它的名字：“Re-base”，意思是**“重新定义（你的）分支的基础”**。</li>
+<li>合并 vs. 变基**:<ul>
+<li><strong><code>merge</code> (合并)</strong>: 像是在高速公路上，两条车道（<code>main</code> 和 <code>feature</code>）最终汇合成一个收费站（Merge Commit）。它忠实地记录了“在某个时间点，我们把两条并行的历史合在了一起”。历史是分叉的。</li>
+<li><strong><code>rebase</code> (变基)</strong>: 想象你用乐高搭了一个小塔（你的 <code>feature</code> 分支提交），这个塔是搭在一块绿色的底板上的（旧的 <code>main</code>）。现在，别人把绿色底板换成了一块更大的蓝色底板（新的 <code>main</code>）。Rebase 做的事情就是：<strong>把你的小塔整体拆掉，然后一块一块地在新的蓝色底板上重新搭一遍</strong>。最终结果是，你的小塔看起来就像从一开始就是搭在蓝色底板上的。历史是线性的、一条直线。</li>
+</ul>
+</li>
+<li><strong>平衡简化与严谨性</strong>:<ul>
+<li><strong>最大好处</strong>: 创造一个非常干净、线性的项目历史。在审查 PR 时，评审者不需要去看那个分叉的、混杂了 <code>main</code> 分支更新的混乱历史。</li>
+<li><strong>黄金法则 (必须严肃强调)</strong>: <strong>绝对不要在任何已经推送到共享的公共分支上进行 <code>rebase</code></strong>。为什么？因为 <code>rebase</code> 的本质是<strong>销毁旧的提交，创建新的提交</strong>。如果你对一个已经共享的分支 <code>rebase</code>，你就相当于自己创造了一个全新的平行宇宙。当你的同事还在旧的宇宙里工作时，他们 <code>pull</code> 更新，Git 会发现你们俩的历史从某个点开始就完全对不上了，从而导致灾难性的冲突和混乱。</li>
+<li><strong>安全使用场景</strong>: <strong>只在合并到 <code>main</code> 之前，在你自己本地的、未共享的特性分支上</strong>，用来“追赶”<code>main</code> 分支的最新进度，保持你的分支“新鲜”。</li>
+</ul>
+</li>
+</ul>
+<p><strong>D. 交互式 Rebase (<code>rebase -i</code>)：你的历史“编辑工作室”</strong></p>
+<ul>
+<li><strong>第一性问题</strong>：“我的本地分支有太多琐碎的过程性提交，如何把它们合并成一个有意义的提交再发起 PR？”</li>
+<li>如果说 <code>git rebase main</code> 是自动搭积木，那 <code>git rebase -i</code> 就是给了你一个“积木编辑器”。你可以指定一段历史，然后对其中的每一个提交进行操作，比如：<ul>
+<li><code>squash</code>: 把这个提交和上一个提交“压扁”合并成一个。</li>
+<li><code>reword</code>: 只修改这个提交的 Commit Message。</li>
+<li><code>drop</code>: 彻底丢弃这个提交。</li>
+<li><code>edit</code>: 暂停 rebase 过程，让你对这个提交进行更复杂的修改。 这使得在提交 PR 前，将杂乱的开发过程整理成清晰、专业的提交历史成为可能。</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-git-tag：为你的版本打上“里程碑”"><a href="#4-git-tag：为你的版本打上“里程碑”" class="headerlink" title="4. git tag：为你的版本打上“里程碑”"></a><strong>4. <code>git tag</code>：为你的版本打上“里程碑”</strong></h4><ul>
+<li><strong>第一性问题</strong>: “我们的项目今天要发布 1.0 版本，如何给当前这个最终的 Commit 打上一个永久性的、有意义的标记？”</li>
+<li><code>git tag</code> 就是给某个特定的提交记录贴上一个**“永久性的标签”<strong>或</strong>“里程碑”**。与随时可以移动的分支不同，标签一旦创建，就永远指向那个特定的提交，就像照片被钉在了历史墙上的那一刻。这对于版本发布、重大更新等场景至关重要。</li>
+</ul>
+<hr>
+<h3 id="【核心】"><a href="#【核心】" class="headerlink" title="【核心】"></a>【核心】</h3><hr>
+<p><strong>1. 修正提交: <code>git commit --amend</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 场景: 刚提交完，发现 message 写错了</span><br><span class="line">git log --oneline</span><br><span class="line"># ...</span><br><span class="line"># c8a2a5a (HEAD -&gt; my-feature) feat: add new featuer  &lt;-- 有拼写错误</span><br><span class="line"></span><br><span class="line"># 修正 message</span><br><span class="line">git commit --amend -m &quot;feat: add new feature&quot;</span><br><span class="line">git log --oneline</span><br><span class="line"># ...</span><br><span class="line"># f1b3e8d (HEAD -&gt; my-feature) feat: add new feature  &lt;-- SHA 变了, message 修正了</span><br><span class="line"></span><br><span class="line"># 场景: 漏提交了一个文件</span><br><span class="line">echo &quot;new line&quot; &gt;&gt; file1.txt</span><br><span class="line">git add file1.txt</span><br><span class="line"># 使用 --no-edit 可以不修改上次的 message，只把新暂存的内容加进去</span><br><span class="line">git commit --amend --no-edit</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 紧急任务处理: <code>git stash</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 场景: 正在 feature-A 上工作，文件处于修改状态</span><br><span class="line">git status # 显示 file1.txt 被修改</span><br><span class="line"></span><br><span class="line"># 突然来了紧急任务，需要切换分支</span><br><span class="line">git stash save &quot;working on feature-A&quot; # 把修改塞进口袋，并加个备注</span><br><span class="line"># 注意: stash 默认不保存新创建的（untracked）文件。如果需要保存，请使用 `git stash -u`</span><br><span class="line"># 工作区变干净了</span><br><span class="line">git switch main</span><br><span class="line"># ... 在 main 分支上进行紧急修复并提交 ...</span><br><span class="line"></span><br><span class="line"># 紧急任务完成，回到原来的分支</span><br><span class="line">git switch feature-A</span><br><span class="line">git stash list # 查看口袋里有什么: stash@&#123;0&#125;: On feature-A: working on feature-A</span><br><span class="line">git stash pop # 把最近一次塞进去的东西掏出来，并应用到工作区</span><br><span class="line"># 如果你有多条 stash 记录，`pop` 默认操作最新的一条。你也可以使用 `git stash pop stash@&#123;n&#125;` 来指定恢复某一条记录，其中 `n` 是 `git stash list` 显示的编号。</span><br><span class="line"># 也可以用 git stash apply，区别是 apply 不会删除口袋里的记录，pop 会</span><br><span class="line">git status # file1.txt 的修改又回来了</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 强力撤销 (仅限本地!): <code>git reset</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 查看当前历史，假设我们想撤销 C</span><br><span class="line"># D - (HEAD -&gt; my-feature)</span><br><span class="line"># C - fix: something wrong</span><br><span class="line"># B - feat: some feature</span><br><span class="line"># A - Initial commit</span><br><span class="line"></span><br><span class="line"># 模式一: --soft，回到 B，C 的修改进入暂存区</span><br><span class="line">git reset --soft HEAD~1 # HEAD~1 表示 HEAD 的上一个提交，即 C</span><br><span class="line">git status # 会显示 C 提交的所有文件变更都在 &quot;Changes to be committed&quot;</span><br><span class="line"></span><br><span class="line"># 模式二: --mixed，回到 B，C 的修改进入工作区</span><br><span class="line">git reset HEAD~1 # --mixed 是默认选项</span><br><span class="line">git status # 会显示 C 提交的所有文件变更都在 &quot;Changes not staged for commit&quot;</span><br><span class="line"></span><br><span class="line"># 模式三: --hard，回到 B，C 的修改永久丢失</span><br><span class="line">git reset --hard HEAD~1</span><br><span class="line">git status # 工作区是干净的，C 的修改没了！</span><br><span class="line">git log --oneline # C 这条提交记录也没了！</span><br></pre></td></tr></table></figure>
+
+<p><strong>4. 安全撤销 (可用于公共分支): <code>git revert</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 假设 C 提交已经被 push 了，现在发现它有 bug</span><br><span class="line"># D - (HEAD -&gt; main) merge commit</span><br><span class="line"># C - fix: something wrong (with bug)</span><br><span class="line"># B - ...</span><br><span class="line"></span><br><span class="line"># 我们要撤销 C</span><br><span class="line">git revert &lt;C的commit_SHA&gt;</span><br><span class="line"># 这会打开一个编辑器，让你为这次“撤销操作”本身写一个 commit message</span><br><span class="line"># 保存退出后，历史会变成：</span><br><span class="line"># E - (HEAD -&gt; main) Revert &quot;fix: something wrong&quot;</span><br><span class="line"># D - merge commit</span><br><span class="line"># C - fix: something wrong (with bug)</span><br><span class="line"># B - ...</span><br><span class="line"># 注意：C 还在历史里，但 E 这个提交把 C 做的所有事情反向操作了一遍。</span><br></pre></td></tr></table></figure>
+
+<p><strong>5. 清理历史 (仅限本地!): <code>git rebase</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 场景: main 分支更新了，你的特性分支需要同步</span><br><span class="line"># (main) A - B - C</span><br><span class="line">#          \</span><br><span class="line"># (my-feature) D - E</span><br><span class="line"></span><br><span class="line"># 1. 切换到你的分支</span><br><span class="line">git switch my-feature</span><br><span class="line"></span><br><span class="line"># 2. Rebase 到 main</span><br><span class="line">git rebase main</span><br><span class="line"></span><br><span class="line"># Rebase 之后，历史会变成一条直线</span><br><span class="line"># (main) A - B - C</span><br><span class="line">#                \</span><br><span class="line"># (my-feature)    D&#x27; - E&#x27;</span><br><span class="line"># D&#x27; 和 E&#x27; 是全新的提交，但包含了和 D、E 完全一样的代码修改</span><br><span class="line"># 现在你的分支就像是刚刚从最新的 C 点拉出来的一样</span><br></pre></td></tr></table></figure>
+
+<p><strong>6. 版本标记: <code>git tag</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 为当前 HEAD 所在提交打一个轻量标签</span><br><span class="line">git tag v1.0.0</span><br><span class="line"></span><br><span class="line"># 为某个特定的历史提交打一个带附注的标签（推荐，可以写更多信息）</span><br><span class="line">git tag -a v1.0.1 &lt;commit_SHA&gt; -m &quot;Release version 1.0.1&quot;</span><br><span class="line"></span><br><span class="line"># 查看所有标签</span><br><span class="line">git tag</span><br><span class="line"></span><br><span class="line"># 将标签推送到远程仓库（标签默认不推送）</span><br><span class="line">git push origin v1.0.1 # 推送单个标签</span><br><span class="line">git push origin --tags # 推送所有本地标签</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="【实践】"><a href="#【实践】" class="headerlink" title="【实践】"></a>【实践】</h3><hr>
+<p><strong>任务目标</strong>: 模拟一次复杂的开发场景，综合运用本模块所学的多个高级命令。</p>
+<p><strong>背景</strong>: 你正在开发一个新功能 <code>feature/TICKET-999-user-settings</code>，突然需要去修复一个紧急 Bug。</p>
+<p><strong>操作步骤</strong>:</p>
+<ol>
+<li><strong>准备工作</strong>:<ul>
+<li>确保你在 <code>my-remote-practice</code> 项目的 <code>main</code> 分支上，并且是最新状态。</li>
+<li>创建一个新分支 <code>feature/TICKET-999-user-settings</code> 并切换过去。</li>
+</ul>
+</li>
+<li><strong>模拟开发与紧急中断</strong>:<ul>
+<li>在 <code>README.md</code> 文件中增加一行 “## User Settings” 并保存。</li>
+<li>创建一个新文件 <code>settings.txt</code>，在里面写上 “WIP: theme setting” (WIP &#x3D; Work In Progress)。</li>
+<li>现在，你的工作区有两个改动。<strong>不要提交！</strong></li>
+<li><strong>紧急情况！</strong> 使用 <code>git stash</code> 将当前所有修改（包括未暂存的 <code>settings.txt</code>）存起来。</li>
+</ul>
+</li>
+<li><strong>修复紧急 Bug</strong>:<ul>
+<li>切换回 <code>main</code> 分支。</li>
+<li>创建一个新分支 <code>hotfix/URGENT-001-readme-typo</code>。</li>
+<li>在 <code>README.md</code> 的第一行随便修改一个词，模拟修复拼写错误。</li>
+<li>提交这个修改，Commit Message: <code>fix: correct typo in README title</code>。</li>
+<li>切换回 <code>main</code> 分支，将 <code>hotfix</code> 分支合并进来，然后删除 <code>hotfix</code> 分支。（模拟线上已修复）</li>
+</ul>
+</li>
+<li><strong>继续开发并犯错</strong>:<ul>
+<li>切换回 <code>feature/TICKET-999-user-settings</code> 分支。</li>
+<li>使用 <code>git stash pop</code> 恢复你之前的工作。</li>
+<li>现在 <code>README.md</code> 可能会有<strong>冲突</strong>！因为 <code>main</code> 分支也修改了它。打开 <code>README.md</code>，你会看到 Git 标记的冲突区域 (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>)，手动编辑文件以保留你想要的最终内容，删除冲突标记，然后使用 <code>git add README.md</code> 来告诉 Git 冲突已解决。</li>
+<li>将 <code>settings.txt</code> 的内容修改为 “theme: dark”。</li>
+<li>现在，<code>git add .</code> 并提交所有修改，但是故意把 Commit Message 写错: <code>feat: add user setings</code>。</li>
+</ul>
+</li>
+<li><strong>修正错误与整理历史</strong>:<ul>
+<li>使用 <code>git commit --amend</code> 修正上一步的拼写错误。</li>
+<li><strong>本地整理</strong>: 你的特性分支现在落后于 <code>main</code> 了（因为 <code>main</code> 有了 hotfix 的提交）。在<strong>本地</strong>使用 <code>git rebase main</code> 来让你的分支历史保持整洁。</li>
+</ul>
+</li>
+<li><strong>最终提交与标记</strong>:<ul>
+<li>假设功能已完成，现在需要创建一个版本标签。</li>
+<li>在当前分支的最新提交上，打一个带附注的标签 <code>v1.1.0-alpha</code>，附注信息为 “Feature: User Settings Complete”。</li>
+</ul>
+</li>
+<li><strong>推送成果</strong>:<ul>
+<li>将你的 <code>feature/TICKET-999-user-settings</code> 分支推送到远程仓库。</li>
+<li>将你的新标签 <code>v1.1.0-alpha</code> 也推送到远程仓库。</li>
+</ul>
+</li>
+</ol>
+<p><strong>验收标准</strong>:</p>
+<ul>
+<li>你的远程仓库有一个新的分支 <code>feature/TICKET-999-user-settings</code>。</li>
+<li>查看这个分支的提交历史，它应该是在 <code>main</code> 分支的 <code>hotfix</code> 提交<strong>之后</strong>，且只有一条关于 “user settings” 的清晰提交，没有合并的痕跡。</li>
+<li>你的远程仓库的 “Tags” 页面，出现了一个 <code>v1.1.0-alpha</code> 的标签，指向你最后的那个功能提交。</li>
+<li>整个过程中，你成功使用了 <code>stash</code>, <code>commit --amend</code>, <code>rebase</code>, <code>tag</code>。</li>
+</ul>
+<h3 id="【模块总结】"><a href="#【模块总结】" class="headerlink" title="【模块总结】"></a><strong>【模块总结】</strong></h3><p>做得好！你已经掌握了 Git 中一些最强大的工具。这些“高级驾驶技巧”——无论是用 <code>reset</code> 和 <code>amend</code> 精准地修改本地历史，用 <code>stash</code> 灵活地应对突发任务，还是用 <code>rebase</code> 创造出清晰的提交流——都将让你成为一个更高效、更专业的开发者。</p>
+<p>请永远记住，能力越大，责任越大。特别是对于改写历史的命令 (<code>reset</code>, <code>rebase</code>, <code>amend</code>)，一定要遵循黄金法则：<strong>只对你自己的、未分享的本地提交使用它们</strong>。</p>
+<p>现在，你不仅会“开车”，更具备了应对复杂路况的“修车”和“特技驾驶”能力。继续在实践中运用它们，你将对版本控制有更深刻的理解。</p>
+ 
+    </div>
+    <footer class="article-footer">
+      <a
+        data-url="https://wincheer.github.io/2025/10/02/%E6%A8%A1%E5%9D%97%E4%B8%83%EF%BC%9A%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"
+        data-id="cuidMjfcSyBBNSbSGqygpHeSb"
+        data-title="模块七：高级技巧与最佳实践"
+        class="article-share-link"
+        ><span class="fa fa-share">分享</span></a
+      >
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li></ul>
+
+    </footer>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E5%85%AB%EF%BC%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E8%B7%B5%E4%B8%8E%E7%AD%94%E7%96%91/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          模块八：综合实践与答疑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E5%85%AD%EF%BC%9APull-Request-%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">模块六：Pull Request 与代码审查</div>
+    </a>
+  
+</nav>
+ 
+</article>
+
+<!-- Waline 评论系统 -->
+
+<section
+  id="comments"
+  style="
+    padding: 20px;
+    margin-top: 40px;
+    background: #f9f9f9;
+    border-radius: 8px;
+  "
+>
+  <h3 style="margin-bottom: 20px; font-size: 1.5em; color: #333">💬 评论</h3>
+  <div id="waline"></div>
+
+  <!-- Waline 样式 -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"
+  />
+
+  <!-- Waline 脚本 -->
+  <script type="module">
+    import { init } from 'https://cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.mjs';
+
+    try {
+      init({
+        el: '#waline',
+        serverURL: 'https://wincheerblogcomment.vercel.app',
+        lang: 'zh-CN',
+        locale: {
+          placeholder: '欢迎留言交流！支持 Markdown 语法 😊',
+        },
+        emoji: [
+          'https://unpkg.com/@waline/emojis@1.1.0/weibo',
+          'https://unpkg.com/@waline/emojis@1.1.0/bmoji',
+        ],
+        dark: 'auto',
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick"],
+        wordLimit: 0,
+        pageSize: 10,
+      });
+      console.log('Waline 初始化成功');
+    } catch (error) {
+      console.error('Waline 初始化失败:', error);
+    }
+  </script>
+</section>
+
+
+<!-- Disqus 评论系统 -->
+
+
+<!-- Valine 评论系统 -->
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/prepare/">预备知识</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/prepare/Git-Github-%E6%96%B0%E6%89%8B%E5%AE%8C%E5%85%A8%E5%85%A5%E9%97%A8/">Git/Github 新手完全入门</a><span class="category-list-count">10</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHubFlow/" rel="tag">GitHubFlow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5/" rel="tag">代码审查</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/GitHub/" style="font-size: 15px;">GitHub</a> <a href="/tags/GitHubFlow/" style="font-size: 10px;">GitHubFlow</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5/" style="font-size: 10px;">代码审查</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">十月 2025</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E5%85%AB%EF%BC%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E8%B7%B5%E4%B8%8E%E7%AD%94%E7%96%91/">模块八：综合实践与答疑</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%B8%83%EF%BC%9A%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">模块七：高级技巧与最佳实践</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E5%85%AD%EF%BC%9APull-Request-%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5/">模块六：Pull Request 与代码审查</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%BA%94%EF%BC%9A%E8%A7%84%E8%8C%83%E5%8C%96%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81/">模块五：规范化开发工作流</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E5%9B%9B%EF%BC%9A%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8E-GitHub-%E5%8D%8F%E4%BD%9C/">模块四：远程仓库与 GitHub 协作</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+       © 2025 Think In AI. All rights reserved. 
+      &copy; 2025 wincheer<br />
+      Powered by
+      <a href="https://hexo.io/" target="_blank">Hexo</a>
+
+      <!-- 不蒜子访问统计 -->
+      
+      <div
+        class="busuanzi-stats"
+        style="margin-top: 10px; color: #999; font-size: 0.9em"
+      >
+        <span id="busuanzi_container_site_pv" style="margin-right: 15px">
+          👀 本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+        </span>
+        <span id="busuanzi_container_site_uv">
+          👤 总访客数 <span id="busuanzi_value_site_uv"></span> 人
+        </span>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+
+<!-- 不蒜子统计脚本 -->
+
+<script
+  async
+  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+></script>
+
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/ai-practice" class="mobile-nav-link">AI实战</a>
+  
+    <a href="/categories/ai-news" class="mobile-nav-link">AI新闻</a>
+  
+    <a href="/categories/ai-thinking" class="mobile-nav-link">AI思考</a>
+  
+    <a href="/categories/prepare" class="mobile-nav-link">预备知识</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
