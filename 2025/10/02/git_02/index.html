@@ -9,18 +9,18 @@
   <meta name="description" content="欢迎回来！在模块一，我们成功安装并配置了 Git，相当于为我们的“作家”生涯办好了“作者证”。现在，我们要正式开始创作了。 在这个模块，我们将学习如何开启一本新书（一个新项目），如何将我们的草稿（代码文件）一章一章地整理、存档，并回顾我们的创作历史。我们会接触到 Git 中最高频、最核心的一组命令。 准备好了吗？让我们把一个普通的文件夹，变成一个拥有超能力的“智能项目”吧！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="模块二：本地仓库核心操作">
-<meta property="og:url" content="https://wincheer.github.io/2025/10/02/%E6%A8%A1%E5%9D%97%E4%BA%8C%EF%BC%9A%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%A0%B8%E5%BF%83%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:url" content="https://wincheer.github.io/2025/10/02/git_02/index.html">
 <meta property="og:site_name" content="Think In AI">
 <meta property="og:description" content="欢迎回来！在模块一，我们成功安装并配置了 Git，相当于为我们的“作家”生涯办好了“作者证”。现在，我们要正式开始创作了。 在这个模块，我们将学习如何开启一本新书（一个新项目），如何将我们的草稿（代码文件）一章一章地整理、存档，并回顾我们的创作历史。我们会接触到 Git 中最高频、最核心的一组命令。 准备好了吗？让我们把一个普通的文件夹，变成一个拥有超能力的“智能项目”吧！">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wincheer.github.io/2025/10/02/%E6%A8%A1%E5%9D%97%E4%B8%80%EF%BC%9AGit-%E4%B8%8E-GitHub-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/s.png">
+<meta property="og:image" content="https://wincheer.github.io/2025/10/02/git_02/git-status.png">
 <meta property="article:published_time" content="2025-10-02T12:20:31.000Z">
 <meta property="article:modified_time" content="2025-10-03T03:21:24.968Z">
 <meta property="article:author" content="wincheer">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="GitHub">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wincheer.github.io/2025/10/02/%E6%A8%A1%E5%9D%97%E4%B8%80%EF%BC%9AGit-%E4%B8%8E-GitHub-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/s.png">
+<meta name="twitter:image" content="https://wincheer.github.io/2025/10/02/git_02/git-status.png">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -92,19 +92,19 @@
 
       <div class="outer">
         <section id="main"><article
-  id="post-模块二：本地仓库核心操作"
+  id="post-git_02"
   class="h-entry article article-type-post"
   itemprop="blogPost"
   itemscope
   itemtype="https://schema.org/BlogPosting"
 >
   <div class="article-meta">
-    <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%BA%8C%EF%BC%9A%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%A0%B8%E5%BF%83%E6%93%8D%E4%BD%9C/" class="article-date">
+    <a href="/2025/10/02/git_02/" class="article-date">
   <time class="dt-published" datetime="2025-10-02T12:20:31.000Z" itemprop="datePublished">2025-10-02</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/prepare/">预备知识</a>►<a class="article-category-link" href="/categories/prepare/Git-Github-%E6%96%B0%E6%89%8B%E5%AE%8C%E5%85%A8%E5%85%A5%E9%97%A8/">Git/Github 新手完全入门</a>
+    <a class="article-category-link" href="/categories/prepare/">预备知识</a>►<a class="article-category-link" href="/categories/prepare/git-github/">Git/Github 新手完全入门</a>
   </div>
 
 
@@ -203,7 +203,7 @@
 </li>
 </ol>
 <p>这个流程可以用下图来概括：</p>
-<p><img src="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%B8%80%EF%BC%9AGit-%E4%B8%8E-GitHub-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/s.png" alt="git 状态变化"></p>
+<p><img src="/2025/10/02/git_02/git-status.png" alt="git 状态变化"></p>
 <h4 id="3-gitignore-文件-——-项目的“忽略清单”"><a href="#3-gitignore-文件-——-项目的“忽略清单”" class="headerlink" title="3. .gitignore 文件 —— 项目的“忽略清单”"></a><strong>3. <code>.gitignore</code> 文件 —— 项目的“忽略清单”</strong></h4><p>第一性问题：是不是项目里的所有文件我们都想进行版本控制？</p>
 <p>当然不是。设想一下，你的项目可能会自动生成一些日志文件 (<code>.log</code>)，或者在编译过程中产生大量的临时文件 (比如 <code>node_modules</code> 文件夹)，或者包含一些你不希望上传的本地配置文件（比如包含密码的 <code>config.local.js</code>）。</p>
 <p>把这些文件都存进 Git 仓库会是一场灾难：</p>
@@ -372,8 +372,8 @@
     </div>
     <footer class="article-footer">
       <a
-        data-url="https://wincheer.github.io/2025/10/02/%E6%A8%A1%E5%9D%97%E4%BA%8C%EF%BC%9A%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%A0%B8%E5%BF%83%E6%93%8D%E4%BD%9C/"
-        data-id="cuidQzFPYZulvIBHByZnMGBXy"
+        data-url="https://wincheer.github.io/2025/10/02/git_02/"
+        data-id="cuidMtEzudVXDqXJD3KcO6cun"
         data-title="模块二：本地仓库核心操作"
         class="article-share-link"
         ><span class="fa fa-share">分享</span></a
@@ -386,7 +386,7 @@
    
 <nav id="article-nav">
   
-    <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%B8%89%EF%BC%9A%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E4%B8%8E%E5%90%88%E5%B9%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2025/10/02/git_03/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
@@ -396,7 +396,7 @@
     </a>
   
   
-    <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%B8%80%EF%BC%9AGit-%E4%B8%8E-GitHub-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2025/10/02/git_01/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
       <div class="article-nav-title">模块一：Git 与 GitHub 基础入门</div>
     </a>
@@ -468,7 +468,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/prepare/">预备知识</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/prepare/Git-Github-%E6%96%B0%E6%89%8B%E5%AE%8C%E5%85%A8%E5%85%A5%E9%97%A8/">Git/Github 新手完全入门</a><span class="category-list-count">8</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/prepare/">预备知识</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/prepare/git-github/">Git/Github 新手完全入门</a><span class="category-list-count">8</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -510,23 +510,23 @@
       <ul>
         
           <li>
-            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E5%85%AB%EF%BC%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E8%B7%B5%E4%B8%8E%E7%AD%94%E7%96%91/">模块八：综合实践与答疑</a>
+            <a href="/2025/10/02/git_08/">模块八：综合实践与答疑</a>
           </li>
         
           <li>
-            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%B8%83%EF%BC%9A%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">模块七：高级技巧与最佳实践</a>
+            <a href="/2025/10/02/git_07/">模块七：高级技巧与最佳实践</a>
           </li>
         
           <li>
-            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E5%85%AD%EF%BC%9APull-Request-%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5/">模块六：Pull Request 与代码审查</a>
+            <a href="/2025/10/02/git_06/">模块六：Pull Request 与代码审查</a>
           </li>
         
           <li>
-            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E4%BA%94%EF%BC%9A%E8%A7%84%E8%8C%83%E5%8C%96%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81/">模块五：规范化开发工作流</a>
+            <a href="/2025/10/02/git_05/">模块五：规范化开发工作流</a>
           </li>
         
           <li>
-            <a href="/2025/10/02/%E6%A8%A1%E5%9D%97%E5%9B%9B%EF%BC%9A%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8E-GitHub-%E5%8D%8F%E4%BD%9C/">模块四：远程仓库与 GitHub 协作</a>
+            <a href="/2025/10/02/git_04/">模块四：远程仓库与 GitHub 协作</a>
           </li>
         
       </ul>
